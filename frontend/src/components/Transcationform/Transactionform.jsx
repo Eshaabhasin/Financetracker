@@ -68,7 +68,7 @@ function TransactionForm({ onAdd, onEdit, onDelete, editingTransaction }) {
       className="bg-[#1f1f1f] text-white p-6 rounded-xl shadow-md"
     >
       <h2 className="text-2xl font-semibold mb-4 text-yellow-400">
-        {editingTransaction ? "Edit Transaction" : "Add Transaction"}
+        {editingTransaction ? "Edit Transaction" : "Track Personal Finance"}
       </h2>
 
       <div className="space-y-4">

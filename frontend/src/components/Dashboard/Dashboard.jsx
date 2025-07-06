@@ -3,10 +3,17 @@ import CategoryPieChart from "../CategoryPieChart/CategoryPieChart";
 import MonthlyExpensesChart from "../MonthlyExpensesChart/MonthlyExpensesChart";
 import TransactionList from "../TransactionList/TransactionList";
 import TransactionForm from "../Transcationform/Transactionform";
-
+import BudgetComparisonChart from "../BudgetComparisonChart/BudgetComparisonChart";
+import BudgetInsights from "../BudgetInsights/BudgetInsights";
 function Dashboard() {
   const [transactions, setTransactions] = useState([]);
   const [editingTransaction, setEditingTransaction] = useState(null);
+  const defaultBudgets = {
+  Food: 5000,
+  Shopping: 3000,
+  Transport: 2000,
+  Health: 1500,
+};
 
   const handleAdd = (txn) => {
     setTransactions([txn, ...transactions]);
@@ -115,7 +122,18 @@ function Dashboard() {
           <CategoryPieChart data={categoryData} />
         </div>
       </div>
-
+ {transactions.length > 0 && (
+  <>
+    <BudgetComparisonChart
+      transactions={transactions}
+      defaultBudgets={defaultBudgets}
+    />
+    <BudgetInsights
+      transactions={transactions}
+      defaultBudgets={defaultBudgets}
+    />
+  </>
+)}
       {/* 🔶 Bottom: Transaction List */}
       <div className="mt-10">
         <TransactionList
